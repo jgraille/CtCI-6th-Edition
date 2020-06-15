@@ -13,6 +13,9 @@ def main():
 	assert cost_providerthree == 7.0
 	bench1 = BenchMark('bench1')
 	bench2 = BenchMark('bench2')
+	print(bench1)
+	print(bench2)
+
 	
 if __name__ == "__main__":
 	main()
