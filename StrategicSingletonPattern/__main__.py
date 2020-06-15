@@ -16,6 +16,6 @@ def main():
 	print(bench1)
 	print(bench2)
 
-	
+	print("test")
 if __name__ == "__main__":
 	main()
