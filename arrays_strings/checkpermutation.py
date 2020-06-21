@@ -18,6 +18,7 @@ def checkpermutation_1(string1,string2):
 def main():
     print(checkpermutation_1("issou","uossi"))
     print(checkpermutation_1("issou","uossa"))
+    print(checkpermutation_1("issou",""))
     
 
 if __name__ == "__main__":
