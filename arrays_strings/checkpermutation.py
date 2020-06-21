@@ -9,13 +9,15 @@ def checkpermutation_1(string1,string2):
             j -= 1
             if j < 0:
                 break
-        return True
+        if i == len(string1):
+            return True
+        else:
+            return False
 
 
 def main():
-    string1 = "issou"
-    string2 = "uossi"
-    print(checkpermutation_1(string1,string2))
+    print(checkpermutation_1("issou","uossi"))
+    print(checkpermutation_1("issou","uossa"))
     
 
 if __name__ == "__main__":
