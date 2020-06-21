@@ -58,7 +58,7 @@ def isunique_4(string):
 class Gen:
 
     def __init__(self):
-        self.size = random.randint(0,15)
+        self.size = random.randint(100,200)
         self.string = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase) for _ in range(self.size))
 
 
@@ -66,7 +66,7 @@ class UniqueTest:
 
     def __init__(self):
         random.seed(10)
-        self.strings = [Gen().string for i in range(10)]
+        self.strings = [Gen().string for i in range(20)]
     
     def test_isunique1(self):
         start = datetime.datetime.now()
