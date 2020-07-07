@@ -1,5 +1,10 @@
 
+
+def URLifyTrueLength(sentence,n):
+    print("True length")
+
 def URLify(sentence,n):
+    # when n is not the true length
     i = n - 1
     sentence = list(sentence)
     while i>=0 and sentence[i] == ' ':
