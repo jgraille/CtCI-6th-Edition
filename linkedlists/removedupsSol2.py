@@ -34,6 +34,7 @@ def removedups(mylinkedlist):
 
 def main():
   mylinkedlist = Node(1,Node(2,Node(2,Node(4,None))))
+  print(type(mylinkedlist.following))
   #display(mylinkedlist)
   res = removedups(mylinkedlist)
   display(res)
