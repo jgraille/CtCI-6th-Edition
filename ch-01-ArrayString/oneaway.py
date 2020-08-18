@@ -1,6 +1,44 @@
 import difflib
 import re
 import unittest
+import datetime
+import random
+import string
+
+random.seed(9001)
+
+def one_edit_replace(s1, s2):
+  edited = False
+  for c1, c2 in zip(s1, s2):
+      if c1 != c2:
+          if edited:
+              return False
+          edited = True
+  return True 
+
+def one_edit_insert(s1, s2):
+    edited = False
+    i, j = 0, 0
+    while i < len(s1) and j < len(s2):
+        if s1[i] != s2[j]:
+            if edited:
+                return False
+            edited = True
+            j += 1
+        else:
+            i += 1
+            j += 1
+    return True
+
+def one_away(s1, s2):
+  if len(s1) == len(s2):
+      return one_edit_replace(s1, s2)
+  elif len(s1) + 1 == len(s2):
+      return one_edit_insert(s1, s2)
+  elif len(s1) - 1 == len(s2):
+      return one_edit_insert(s2, s1)
+  return False
+
 
 def find(val):
   res = re.search(r"(-|\+)", val)
@@ -19,9 +57,18 @@ def OneAway(string1,string2):
   else:
     return True
 
+class Gen:
+    def __init__(self):
+        self.size = random.randint(50,100)
+        self.string = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase) for _ in range(self.size))
+
 # https://github.com/careercup/CtCI-6th-Edition-Python/blob/master/Chapter1/5_One%20Away/OneAway.py
-class Test(unittest.TestCase):
+class Test():
     '''Test Cases'''
+    a = Gen().string
+    b = Gen().string
+    print(a)
+    print(b)
     data = [
         ('pale', 'ple', True),
         ('pales', 'pale', True),
@@ -43,16 +90,27 @@ class Test(unittest.TestCase):
         ('pale', 'pkle', True),
         ('pkle', 'pable', False),
         ('pal', 'palks', False),
-        ('palks', 'pal', False)
+        ('palks', 'pal', False),
+        (a,b,False),
     ]
 
-    def test_one_away(self):
-        for [test_s1, test_s2, expected] in self.data:
-            actual = OneAway(test_s1, test_s2)
-            self.assertEqual(actual, expected)
+    def test_one_away1(self):
+      start = datetime.datetime.now()
+      for [test_s1, test_s2, expected] in self.data:
+        actual = one_away(test_s1, test_s2)
+      time = datetime.datetime.now() - start
+      print(time)
+
+    def test_one_away2(self):
+      start = datetime.datetime.now()
+      for [test_s1, test_s2, expected] in self.data:
+        actual = OneAway(test_s1, test_s2)
+      time = datetime.datetime.now() - start
+      print(time)
+      
 def main():
-  print(OneAway('pale', 'pkle'))
-  unittest.main()
+  Test().test_one_away1()
+  Test().test_one_away2()
   '''
   a = 'doretdeplatine'
   # remove case
