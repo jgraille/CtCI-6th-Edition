@@ -51,7 +51,6 @@ def OneAway(string1,string2):
   d = difflib.Differ()
   resMatch = list(filter(lambda x: x != None, list(map(find,list(d.compare(string1,string2))))))
   dic = {'-':resMatch.count('-'), '+':resMatch.count('+')}
-  print(dic)
   if abs(dic['-'] - dic['+']) > 1 or (dic['-'] == dic['+'] and dic['-'] > 1) or (abs(dic['-'] - dic['+']) == 1 and dic['-'] != 0 and dic['+'] != 0):
     return False
   else:
@@ -63,7 +62,7 @@ class Gen:
         self.string = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase) for _ in range(self.size))
 
 # https://github.com/careercup/CtCI-6th-Edition-Python/blob/master/Chapter1/5_One%20Away/OneAway.py
-class Test():
+class Test(unittest.TestCase):
     '''Test Cases'''
     a = Gen().string
     b = Gen().string
@@ -98,6 +97,7 @@ class Test():
       start = datetime.datetime.now()
       for [test_s1, test_s2, expected] in self.data:
         actual = one_away(test_s1, test_s2)
+        self.assertEqual(actual, expected)
       time = datetime.datetime.now() - start
       print(time)
 
@@ -105,12 +105,12 @@ class Test():
       start = datetime.datetime.now()
       for [test_s1, test_s2, expected] in self.data:
         actual = OneAway(test_s1, test_s2)
+        self.assertEqual(actual, expected)
       time = datetime.datetime.now() - start
       print(time)
       
 def main():
-  Test().test_one_away1()
-  Test().test_one_away2()
+  unittest.main()
   '''
   a = 'doretdeplatine'
   # remove case
