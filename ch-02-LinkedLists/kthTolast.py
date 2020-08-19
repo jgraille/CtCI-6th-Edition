@@ -28,7 +28,8 @@ def kthtolast(l, k):
 
 def main():
   linkedlist = Node(3,(Node(2,Node(1,Node(9,None)))))
-  kthtolast(linkedlist,5)
+  # kthtolast(linkedlist,5)
+  print(size(linkedlist))
 
 if __name__ == '__main__':
   main()
