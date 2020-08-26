@@ -77,7 +77,7 @@ class Menu(Cmd):
 
 def main():
   # les pièces acceptées sont 0.10,0.20,0.50,1 et 2 euros
-  menu = Menu().cmdloop('Starting the jukebox...\n' + 'Please insert coins...\n')
+  menu = Menu().cmdloop('Starting the jukebox...\n' + 'Please insert coins...\n'+'50 cents or 2 euros\n')
 
 if __name__ == '__main__':
   main()
