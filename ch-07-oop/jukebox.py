@@ -2,13 +2,11 @@ from cmd import Cmd
 from pyfiglet import Figlet
 
 class JukeBox():
-  def __init__(self,name):
+  def __init__(self,name,songs):
     self.name = name
-    self.songs = ['Through The Fire and Flames',
-                  'Fury of The Storm',
-                  'Heroes of Out Time',
-                  'Soldiers of The Wastelands',
-                  'Cry Thunder']
+    self.songs = []
+    for song in songs:
+      self.songs.append(song.name)
     # copying by valye not reference
     self.queue = self.songs[:]
 
@@ -17,11 +15,14 @@ class JukeBox():
   
   def records(self):
     if not self.queue:
-      self.queue = ['Through The Fire and Flames',
+      self.queue = self.songs
+      '''
+      ['Through The Fire and Flames',
                     'Fury of The Storm',
                     'Heroes of Out Time',
                     'Soldiers of The Wastelands',
                     'Cry Thunder']
+      '''
       print('recharge de la pile')
       return self.queue
     elif len(self.queue) == 1:
@@ -45,6 +46,10 @@ class JukeBox():
     else:
       print(f"Not enough money")
 
+class Song:
+  def __init__(self,name):
+    self.name = name
+
 
 class Menu(Cmd):
   f = Figlet(font ='slant')
@@ -62,7 +67,12 @@ class Menu(Cmd):
 
   def __init__(self):
     super(Menu, self).__init__()
-    self.jukebox = JukeBox('JukeBox 2020')
+    song1 = Song('Through The Fire and Flames')
+    song2 = Song('Fury of The Storm') 
+    song3 = Song('Heroes of Out Time') 
+    song4 = Song('Soldiers of The Wastelands') 
+    song5 = Song('Cry Thunder') 
+    self.jukebox = JukeBox('JukeBox 2020',[song1,song2,song3,song4,song5])
   
   def do_q(self, args=True):
     print('\n Closed Jukebox')
