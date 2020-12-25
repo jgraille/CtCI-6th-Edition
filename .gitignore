@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+# sbt config
+.bsp/
+
 # Distribution / packaging
 .Python
 build/
