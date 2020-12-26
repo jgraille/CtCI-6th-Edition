@@ -1,3 +1,8 @@
-scalaVersion := "2.10.1"
-mainClass := Some("HelloWorld")
+ThisBuild / scalaVersion := "2.12.7"
+ThisBuild / organization := "CtCI"
+
+lazy val hello = (project in file("."))
+  .settings(
+    name := "arraystring"
+  )
 
