@@ -1,9 +1,8 @@
-package arraystring
 import scala.collection.mutable.ListBuffer
 import scala.collection.mutable.Map
 
-object ArrayString {
-  def stringcompression(input: String): String = {
+object StrCompress extends App{
+  def run(input: String): String = {
     var len : Int = input.length
     var list : ListBuffer[String] = new ListBuffer[String]()
     var dic : scala.collection.mutable.Map[String,Int] = Map()
@@ -31,12 +30,14 @@ object ArrayString {
     }
     return ans
   }
-
+  /*
+  // migrating the test part in the test folder
   def main(args: Array[String]) {
     val myList : List[String] = List("aabcccccaaa","abc","AAAACTTTTUV")
-    val resList = myList.map(stringcompression)
+    val resList = myList.map(run)
     println(myList)
     println(resList)
    }
+   */
 
 }

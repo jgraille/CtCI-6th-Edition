@@ -3,6 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# metals the extension for scala in vscode
+.metals/
+.vscode/
+
 # C extensions
 *.so
 
