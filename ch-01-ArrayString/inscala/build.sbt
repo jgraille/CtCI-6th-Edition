@@ -4,6 +4,8 @@ ThisBuild / organization := "CtCI"
 libraryDependencies += "org.scalactic" %% "scalactic" % "3.2.2"
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.2" % Test
 
+scalacOptions ++= Seq("-deprecation", "-feature")
+
 lazy val hello = (project in file("."))
   .settings(
     name := "StrCompress"

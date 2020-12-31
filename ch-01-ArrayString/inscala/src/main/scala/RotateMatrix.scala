@@ -2,19 +2,19 @@ import Array._
 
 class Matrix(val dim: Int) {
     var largeur: Int = dim
-    var longueur: Int = dim  
-
-def init(): Array[Array[Int]] = {
-    var matrix = ofDim[Int](largeur,longueur)
-    return matrix 
+    var longueur: Int = dim
+    var matrix: Array[Array[Int]] = Array.ofDim[Int](largeur,longueur)  
+    
+    def feed(): Array[Array[Int]] = {
+        for(i <- 1 to largeur){
+            for(j <- 1 to longueur){
+                matrix(i)(j) = 1
+            }
+        }
+        return matrix
     }
 }
-
-object Create extends App {
-    val myMatrix = new Matrix(4);
-    for (x <- myMatrix.init()) {
-        for (y <- x) {
-            print(y)
-        }
-    }
+object Diplay extends App {
+    val myMatrix = new Matrix(4)
+    myMatrix.feed.foreach {row => row foreach print; println}
 }
