@@ -104,12 +104,17 @@ import org.junit.Assert.assertEquals
   @Test def `sum when one number`: Unit = {
     Assert.assertEquals(sum(List(1)),1)
   }
-
   @Test def `max of a few numbers (10pts)`: Unit = {
     assert(max(List(3, 7, 2)) == 7)
   }
-
-
-
+  @Test def `max of 2 numbers`: Unit = {
+    assert(max(List(3, 7)) == 7)
+  }
+  @Test def `max when 1 number`: Unit = {
+    assert(max(List(3)) == 3)
+  }
+  @Test def `max when empty list`: Unit = {
+    assert(max(List[Int]()) == 0)
+  }
   @Rule def individualTestTimeout = new org.junit.rules.Timeout(1000)
 }
