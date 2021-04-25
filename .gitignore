@@ -109,3 +109,12 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# sbt folders
+FunctionalProgrammingPrinciples/week1/.bloop/
+FunctionalProgrammingPrinciples/week1/.metals/
+FunctionalProgrammingPrinciples/week1/.vscode/
+FunctionalProgrammingPrinciples/week1/project/
+FunctionalProgrammingPrinciples/week1/target/
+FunctionalProgrammingPrinciples/week1/.scalafix.conf/
+
