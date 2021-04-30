@@ -6,6 +6,8 @@ __pycache__/
 # metals the extension for scala in vscode
 .metals/
 .vscode/
+.bloop/
+project/
 
 # C extensions
 *.so

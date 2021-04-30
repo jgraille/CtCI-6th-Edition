@@ -12,7 +12,7 @@ object RecFun extends RecFunInterface {
         print(s"${pascal(col, row)} ")
     }
     */
-    val res = balance("this is awesome)".toList)
+    val res = countP("t(hi(s".toList)
     println(res)
   }
 
@@ -30,19 +30,26 @@ object RecFun extends RecFunInterface {
    * Exercise 2
    */
   def balance(chars: List[Char]): Boolean = {
-    var c = chars
-    if (!c.isEmpty) {
-      if (c.head == ')') false
-      while (!c.tail.isEmpty) {
-        if (c.head == '(') {
-          if (c.tail.find(_ == ')') == None) false
-        }
-        if (c.last == ')') false
-        c = c.drop(1)
-      }
-      true
+    if (countPright(chars))
+  }
+
+  def countPright(chars: List[Char]): Int = {
+    if (chars.isEmpty) {
+      0
+    } else if (chars.head == '(') {
+      return countP(chars.tail) + 1
     } else {
-      false
+      return countP(chars.tail) 
+    }
+  }
+
+  def countPLeft(chars: List[Char]): Int = {
+    if (chars.isEmpty) {
+      0
+    } else if (chars.head == '(') {
+      return countP(chars.tail) + 1
+    } else {
+      return countP(chars.tail) 
     }
   }
 
