@@ -1,6 +1,7 @@
 package recfun
 
 import scala.collection.mutable.ArrayBuffer
+import java.lang.Math.floorMod
 
 object RecFun extends RecFunInterface {
 
@@ -11,9 +12,11 @@ object RecFun extends RecFunInterface {
       for (col <- 0 to row)
         print(s"${pascal(col, row)} ")
     }
-    */
-    val res = balance("t(hi(s))".toList)
+    val res = balance("toto".toList)
     println(res)
+    */
+    println("10, List(2,5)",changer(10,List(1,2,5),0))
+    println("4, List(2,4)",changer(4,List(1,2,4),0))
   }
 
   /**
@@ -30,42 +33,58 @@ object RecFun extends RecFunInterface {
    * Exercise 2
    */
   def balance(chars: List[Char]): Boolean = {
-    if (!chars.isEmpty) {
-      val left = countPleft(chars)
-      val right = countPright(chars)
-      if (left == right) {
+    def check(chars: List[Char], c: Int): Boolean = {
+      if (chars.isEmpty) {
         true
       } else {
-        false
+        if (chars.head == '(') {
+          check(chars.tail,c+1)
+        } else {
+          if (chars.head == ')') {
+            c>0 && check(chars.tail,c-1)
+          } else {
+            check(chars.tail,c)
+          }
+        }
       }
-    } else {
-      false
     }
-  }
-
-  def countPright(chars: List[Char]): Int = {
-    if (chars.isEmpty) {
-      0
-    }
-    else if (chars.head == '(') {
-      countPright(chars.tail) + 1
-    } else {
-      countPright(chars.tail) 
-    }
-  }
-
-  def countPleft(chars: List[Char]): Int = {
-    if (chars.isEmpty) {
-      0
-    }
-    else if (chars.head == ')') {
-      countPleft(chars.tail) + 1
-    } else {
-      countPleft(chars.tail) 
-    }
+    check(chars,0)
   }
   /**
    * Exercise 3
    */
-  def countChange(money: Int, coins: List[Int]): Int = ???
+  def changer(money: Int, coins: List[Int], c: Int): Int = {
+    if (!coins.isEmpty) {
+      if (floorMod(money,coins.head) == 0) {
+        return changer(money,coins.tail,c+1)
+      } else {
+        val resModulo = floorMod(money,coins.head)
+        if (floorMod(money,resModulo + coins.head) == 0) {
+          return changer(money,coins.tail,c+1)
+        } else {
+          if (coins.contains(floorMod(money,resModulo + coins.head))) {
+            return changer(money,coins.tail,c+1)
+          } else {
+            return changer(money,coins.tail,c)
+          }
+        }
+        return changer(money,coins.tail,c)
+      }
+    } else {
+      return c
+    }
+  }
+
+  def countChange(money: Int, coins: List[Int]): Int = {
+    if (money == 0) {
+      return 0
+    } else {
+      if (coins.isEmpty) {
+        return 0
+      } else {
+        changer(money,coins,0)
+      }
+    }
+    
+  }
 }
